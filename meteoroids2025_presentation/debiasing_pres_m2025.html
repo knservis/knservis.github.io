@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="debiasing_pres_m2025_files/libs/clipboard/clipboard.min.js"></script>
+<script src="debiasing_pres_m2025_files/libs/quarto-html/tabby.min.js"></script>
+<script src="debiasing_pres_m2025_files/libs/quarto-html/popper.min.js"></script>
+<script src="debiasing_pres_m2025_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="debiasing_pres_m2025_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="debiasing_pres_m2025_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="debiasing_pres_m2025_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.32">
+
+  <meta name="author" content="Konstantinos Servis">
+  <meta name="author" content="Hadrien Devillepoix">
+  <meta name="author" content="Eleanor Sansom">
+  <meta name="author" content="Thomas Stevenson">
+  <title>Debiasing Meteoroid Flux Estimates Using the Desert Fireball Network’s Clear-Sky Survey</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="debiasing_pres_m2025_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="debiasing_pres_m2025_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="debiasing_pres_m2025_files/libs/revealjs/dist/theme/quarto-8a5cdbf101a0845817b98f2425171703.css">
+  <link href="debiasing_pres_m2025_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="debiasing_pres_m2025_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="debiasing_pres_m2025_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="debiasing_pres_m2025_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+  
+  <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-video="images/2020-12-03_DFNEXT051_1606983121.mp4" data-background-video-autoplay="true" data-background-video-controls="true" data-background-video-loop="true" data-background-video-muted="false" data-background-video-preload="auto" class="quarto-title-block center">
+  <h1 class="title">Debiasing Meteoroid Flux Estimates Using the Desert Fireball Network’s Clear-Sky Survey</h1>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Konstantinos Servis <a href="https://orcid.org/0000-0002-3596-100X" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a>
+</div>
+<div class="quarto-title-author-email">
+<a href="mailto:knservis@gmail.com">knservis@gmail.com</a>
+</div>
+        <p class="quarto-title-affiliation">
+            Space Science and Technology Centre, Curtin University
+          </p>
+    </div>
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Hadrien Devillepoix <a href="https://orcid.org/0000-0001-9226-1870" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a>
+</div>
+</div>
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Eleanor Sansom <a href="https://orcid.org/0000-0003-2702-673X" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a>
+</div>
+</div>
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Thomas Stevenson <a href="https://orcid.org/0009-0003-7030-6718" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a>
+</div>
+</div>
+</div>
+
+</section>
+<section id="the-problem" class="slide level2 smaller" data-background-video="images/2020-12-03_DFNEXT051_1606983121.mp4" data-background-video-loop="true" data-background-video-muted="true" data-background-video-controls="true" data-background-video-preload="auto" data-background-video-autoplay="true">
+<h2>The Problem</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>Accurate meteoroid flux measurements require:
+<ul>
+<li>Detection of meteors</li>
+<li>Precise measurement of <strong>time-area product</strong> <span class="citation" data-cites="halliday_detailed_1996">(<a href="#/references" role="doc-biblioref" onclick="">Halliday, Griffin, and Blackwell 1996</a>)</span></li>
+</ul></li>
+<li>Desert Fireball Network (DFN):
+<ul>
+<li>30+ cameras across Australia <span class="citation" data-cites="devillepoix_observation_2019">(<a href="#/references" role="doc-biblioref" onclick="">H. A. R. Devillepoix et al. 2019</a>)</span></li>
+<li>Operates since 2015 <span class="citation" data-cites="howie_how_2017">(<a href="#/references" role="doc-biblioref" onclick="">Howie et al. 2017</a>)</span></li>
+<li>Millions of images (300TB compressed from 3PB)</li>
+<li>Varying viewing conditions affecting observations</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="images/dfn.avif"></p>
+</div></div>
+<aside class="notes">
+<ul>
+<li>Mention importance of accurate flux measurements for space hazard assessment</li>
+<li>Emphasize the massive dataset and the challenge of determining when/where the network was observing</li>
+<li>Highlight that this affects all meteor camera networks</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="why-it-matters" class="slide level2">
+<h2>Why It Matters</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div style="font-size: 75%;">
+<ul>
+<li>Accurate flux estimates crucial for:
+<ul>
+<li>Space mission planning <span class="citation" data-cites="brown_flux_2002">(<a href="#/references" role="doc-biblioref" onclick="">P. Brown et al. 2002</a>)</span></li>
+<li>Spacecraft protection <span class="citation" data-cites="moorhead_library_2023">(<a href="#/references" role="doc-biblioref" onclick="">Moorhead 2023</a>)</span></li>
+<li>Understanding meteoroid populations <span class="citation" data-cites="bottke_debiased_2002">(<a href="#/references" role="doc-biblioref" onclick="">Bottke 2002</a>)</span></li>
+<li>Risk assessment (e.g., JWST impact) <span class="citation" data-cites="brown_500-kiloton_2013">(<a href="#/references" role="doc-biblioref" onclick="">P. G. Brown et al. 2013</a>)</span></li>
+</ul></li>
+<li>Current methods are labor-intensive and not comparable across observers</li>
+</ul>
+</div>
+</div><div class="column" style="width:70%;">
+<p><img data-src="images/map_taurus.png"></p>
+</div></div>
+<aside class="notes">
+<ul>
+<li>Mention JWST impact example</li>
+<li>Discuss relevance to Southern Taurids study</li>
+<li>Note importance for hazard assessment</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="our-solution-healpix-based-survey" class="slide level2">
+<h2>Our Solution: HEALPix-Based Survey</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div style="font-size: 75%;">
+<ul>
+<li><strong>HEALPix</strong>: Hierarchical Equal Area isoLatitude Pixelization <span class="citation" data-cites="gorski_healpix_2005">(<a href="#/references" role="doc-biblioref" onclick="">Górski et al. 2005</a>)</span></li>
+<li>Advantages:
+<ul>
+<li>Equal-area pixels (10,606 km² each for this study, using NSIDE=64)</li>
+<li>Easy aggregation across cameras</li>
+<li>Simplified time-area calculations</li>
+<li>Standard framework in astronomy</li>
+</ul></li>
+</ul>
+</div>
+</div><div class="column" style="width:70%;">
+<p><img data-src="images/count_by_healpix.png"></p>
+</div></div>
+<aside class="notes">
+<ul>
+<li>Explain that HEALPix divides sphere into equal-area pixels</li>
+<li>Mention we use NSIDE=64 (resolution parameter)</li>
+<li>Note that this framework is widely used in astronomy</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="interactive-healpix-visualization" class="slide level2" data-background-iframe="hpx.html" data-background-interactive="true">
+<h2>Interactive HEALPix Visualization</h2>
+<aside class="notes">
+<ul>
+<li>This interactive visualization demonstrates how the HEALPix grid works</li>
+<li>Mention that HEALPix cells maintain equal area regardless of position on the sphere</li>
+<li>Point out how this allows for efficient spatial indexing of the sky</li>
+<li>Explain that we’re using this framework at 70km altitude</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="pipeline-overview" class="slide level2">
+<h2>Pipeline Overview</h2>
+<ol type="1">
+<li><strong>L0</strong>: Raw images → Object store <span class="citation" data-cites="howie_how_2017">(<a href="#/references" role="doc-biblioref" onclick="">Howie et al. 2017</a>)</span></li>
+<li><strong>L1</strong>: Extract star sources and fluxes</li>
+<li><strong>L2</strong>: Map to 70km altitude HEALPix grid <span class="citation" data-cites="halliday_detailed_1996">(<a href="#/references" role="doc-biblioref" onclick="">Halliday, Griffin, and Blackwell 1996</a>)</span></li>
+<li><strong>Classification</strong>: Clear vs.&nbsp;cloudy using flux distribution (<span class="math inline">\(R^2 &gt; 0.75\)</span>)</li>
+<li><strong>Aggregation</strong>: Combine across cameras and time</li>
+</ol>
+<aside class="notes">
+<ul>
+<li>Explain why 70km altitude was chosen (typical meteor height)</li>
+<li>Mention MongoDB for tracking millions of files</li>
+<li>Note that this processes 300TB of data (compressed from 3PB)</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="clear-sky-determination" class="slide level2">
+<h2>Clear Sky Determination</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>For each HEALPix cell in each image:
+<ul>
+<li>Sort sources by measured flux</li>
+<li>Fit logarithmic function to flux distribution</li>
+<li>If <span class="math inline">\(R^2 &gt; 0.75\)</span> and sources ≥ 10, mark as “clear”</li>
+<li>Based on astronomical source distribution patterns <span class="citation" data-cites="seares_mean_1925">(<a href="#/references" role="doc-biblioref" onclick="">Seares et al. 1925</a>)</span></li>
+<li>Other sources (e.g., clouds, moon, saturated pixels) break this pattern so they are rejected.</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/log_fit_calib.png"></p>
+</div></div>
+<aside class="notes">
+<ul>
+<li>Explain that astronomical sources follow a logarithmic distribution</li>
+<li>Cloudy regions break this pattern</li>
+<li>This allows automated clear-sky detection across millions of images</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="clear-sky-determination-exmple-not-fitting" class="slide level2">
+<h2>Clear Sky Determination (Exmple not fitting)</h2>
+<div style="position: relative; width: 100%; height: 500px;">
+<p><!-- Background image (large, fills container) --> <img src="images/example_non_clear_1.png" alt="Non-clear example" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;"></p>
+<p><!-- Foreground image (smaller, lower left) --> <img src="images/example_non_clear_1_log_fit.png" alt="Non-clear log fit" style="position: absolute; left: 0; bottom: 0; width: 50%; height: auto; z-index: 2; box-shadow: 0 0 10px #000;"></p>
+</div>
+<!-- ::: {.columns}
+::: {.column width="50%"}
+![](images/example_non_clear_1.png)
+:::
+
+::: {.column width="50%"}
+![](images/example_non_clear_1_log_fit.png)
+:::
+::: -->
+<aside class="notes">
+<ul>
+<li>In this case some of the light is coming through the branches</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="healpix-summary-table" class="slide level2">
+<h2>HEALPix Summary Table</h2>
+<div style="font-size: 75%;">
+<div id="a529489a" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="5">
+<style type="text/css">
+#T_ecb4c th {
+  border: 1px solid #888;
+}
+#T_ecb4c  td {
+  border: 1px solid #888;
+}
+</style>
+
+<table id="T_ecb4c" class="caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th id="T_ecb4c_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">total_healpix</th>
+<th id="T_ecb4c_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">of which non_zero_count</th>
+<th id="T_ecb4c_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">of which count_gt_10</th>
+<th id="T_ecb4c_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">of which prop_non_point_lt_05</th>
+<th id="T_ecb4c_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">of which r2_above_075</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td id="T_ecb4c_row0_col0" class="data row0 col0">18774019</td>
+<td id="T_ecb4c_row0_col1" class="data row0 col1">1112629</td>
+<td id="T_ecb4c_row0_col2" class="data row0 col2">812130</td>
+<td id="T_ecb4c_row0_col3" class="data row0 col3">769610</td>
+<td id="T_ecb4c_row0_col4" class="data row0 col4">699514</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="multi-camera-coverage" class="slide level2">
+<h2>Multi-Camera Coverage</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<ul>
+<li>Aggregate clear HEALPix cells by timestamp</li>
+<li>Record which cameras observed each cell <span class="citation" data-cites="devillepoix_global_2020">(<a href="#/references" role="doc-biblioref" onclick="">H. A. R. Devillepoix et al. 2020</a>)</span></li>
+<li>Requirements for valid observation:
+<ul>
+<li>≥ 30 images per 15-min window</li>
+<li>≥ 2 cameras viewing same HEALPix</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:70%;">
+<p><img data-src="images/single_timestep_example.png"></p>
+</div></div>
+<aside class="notes">
+<ul>
+<li>Explain why multi-camera coverage is important (triangulation, redundancy)</li>
+<li>Note that 2+ camera coverage is required for triangulation</li>
+<li>Mention this helps filter out clouds and camera malfunctions</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="network-coverage-results" class="slide level2">
+<h2>Network Coverage Results</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<ul>
+<li>Study period: Oct-Dec 2015 (Southern Taurids) <span class="citation" data-cites="devillepoix_taurid_2021">(<a href="#/references" role="doc-biblioref" onclick="">Hadrien A. R. Devillepoix et al. 2021</a>)</span></li>
+<li>Average cameras operating: ~15</li>
+<li>Each HEALPix observed multiple times</li>
+<li>Total effective survey area: millions of km²·hours</li>
+<li>First systematic area-time estimate for DFN</li>
+</ul>
+</div><div class="column" style="width:70%;">
+<p><img data-src="images/observation-period_coverage.png"></p>
+</div></div>
+<aside class="notes">
+<ul>
+<li>Mention this period was chosen to align with <span class="citation" data-cites="devillepoix_taurid_2021">Hadrien A. R. Devillepoix et al. (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span> study</li>
+<li>Point out temporal patterns in coverage</li>
+<li>Note that observation typically runs ~10 hours per night</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="fireball-selection-filtering" class="slide level2">
+<h2>Fireball Selection &amp; Filtering</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<ul>
+<li>Two-step filtering:
+<ol type="1">
+<li>Camera must be “observing” (30+ images/15min)</li>
+<li>Fireball must pass through clear HEALPix cell</li>
+</ol></li>
+<li>Additional filter: 70km altitude intersection <span class="citation" data-cites="halliday_detailed_1996">(<a href="#/references" role="doc-biblioref" onclick="">Halliday, Griffin, and Blackwell 1996</a>)</span></li>
+</ul>
+</div><div class="column" style="width:70%;">
+<p><img data-src="images/height_distribution.png"></p>
+</div></div>
+<aside class="notes">
+<ul>
+<li>Explain that this ensures fireballs are only counted when the network could see them</li>
+<li>Note that altitude filter ensures consistent measurement across all meteors</li>
+<li>Mention this follows <span class="citation" data-cites="halliday_detailed_1996">Halliday, Griffin, and Blackwell (<a href="#/references" role="doc-biblioref" onclick="">1996</a>)</span> approach</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="southern-taurids-results" class="slide level2">
+<h2>Southern Taurids Results</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<ul>
+<li>Period: Oct 27 - Nov 17, 2015 <span class="citation" data-cites="spurny_discovery_2017">(<a href="#/references" role="doc-biblioref" onclick="">Spurný et al. 2017</a>)</span></li>
+<li>Detected fireballs after filtering: ~80</li>
+<li>Mass range: ~0.1g to ~10kg</li>
+<li>Dynamic mass calculation <span class="citation" data-cites="gritsevich_meteor_2008 sansom_novel_2015">(<a href="#/references" role="doc-biblioref" onclick="">Gritsevich and Popelenskaya 2008</a>; <a href="#/references" role="doc-biblioref" onclick="">Sansom et al. 2015</a>)</span></li>
+</ul>
+</div><div class="column" style="width:70%;">
+<p><img data-src="images/mass_distribution.png"></p>
+</div></div>
+<aside class="notes">
+<ul>
+<li>Note this was during enhanced Taurid activity</li>
+<li>Mention that mass is calculated dynamically following <span class="citation" data-cites="gritsevich_meteor_2008">Gritsevich and Popelenskaya (<a href="#/references" role="doc-biblioref" onclick="">2008</a>)</span></li>
+<li>Point out that this complements photometric methods</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="size-frequency-distribution" class="slide level2">
+<h2>Size-Frequency Distribution</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<ul>
+<li>Fit with break at ~1g <span class="citation" data-cites="halliday_detailed_1996">(<a href="#/references" role="doc-biblioref" onclick="">Halliday, Griffin, and Blackwell 1996</a>)</span></li>
+<li>Mass indices:
+<ul>
+<li>s = ~2.1 below break</li>
+<li>s = ~1.7 above break</li>
+</ul></li>
+<li>Break consistent with previous studies <span class="citation" data-cites="brown_flux_2002">(<a href="#/references" role="doc-biblioref" onclick="">P. Brown et al. 2002</a>)</span> but in our case it there is also selection bias</li>
+</ul>
+</div><div class="column" style="width:70%;">
+<p><img data-src="images/power_law_fit_comparison.png"></p>
+</div></div>
+<aside class="notes">
+<ul>
+<li>Explain the significance of the break at ~1g (<span class="citation" data-cites="halliday_detailed_1996">Halliday, Griffin, and Blackwell (<a href="#/references" role="doc-biblioref" onclick="">1996</a>)</span> also observed this)</li>
+<li>Note that DFN less sensitive to smaller meteors</li>
+<li>Mention how this connects to formation/fragmentation history</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="comparison-with-other-surveys" class="slide level2">
+<h2>Comparison with Other Surveys</h2>
+
+<img data-src="mass_distribution_fit_comparison.png" class="r-stretch"><p><span style="font-size: 70%; color: #555;"> 270 kg/m³ is estimated by <span class="citation" data-cites="ceplecha_earths_1988">(<a href="#/references" role="doc-biblioref" onclick="">Ceplecha 1988</a>)</span> for cometary origin </span></p>
+<aside class="notes">
+<ul>
+<li>Point out how DFN and CAMS data complement each other</li>
+<li>Note that assuming 300 kg/m³ density provides best continuity</li>
+<li>Note that 270 kg/m³ is consistent with Ceplecha (1988) for cometary meteoroids.</li>
+<li>Mention that different mass calculation methods (dynamic vs.&nbsp;photometric) lead to different results</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="benefits-future-work" class="slide level2">
+<h2>Benefits &amp; Future Work</h2>
+<ul>
+<li><strong>Benefits</strong>:
+<ul>
+<li>Automated processing of millions of images</li>
+<li>Accurate time-area product calculation <span class="citation" data-cites="bland_rate_2006">(<a href="#/references" role="doc-biblioref" onclick="">Bland and Artemieva 2006</a>)</span></li>
+<li>Standardized, equal-area framework <span class="citation" data-cites="gorski_healpix_2005">(<a href="#/references" role="doc-biblioref" onclick="">Górski et al. 2005</a>)</span></li>
+<li>Applicable to other meteor networks</li>
+</ul></li>
+<li><strong>Future Work</strong>:
+<ul>
+<li>Release as Python library</li>
+<li>Add apex-centered HEALPix for stream correction</li>
+<li>Combine dynamic and photometric mass methods</li>
+<li>Extend to full DFN dataset (2015-present)</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<ul>
+<li>Emphasize how this method automates what was previously manual</li>
+<li>Note that the framework could benefit other networks (CAMS, GMN, etc.)</li>
+<li>Mention potential for better cometary debris field visualization</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="conclusions" class="slide level2">
+<h2>Conclusions</h2>
+<ul>
+<li>HEALPix provides robust framework for meteor network debiasing <span class="citation" data-cites="gorski_healpix_2005">(<a href="#/references" role="doc-biblioref" onclick="">Górski et al. 2005</a>)</span></li>
+<li>Automated clear-sky detection enables processing of vast datasets</li>
+<li>Method extends to multiple cameras with varying conditions <span class="citation" data-cites="devillepoix_global_2020">(<a href="#/references" role="doc-biblioref" onclick="">H. A. R. Devillepoix et al. 2020</a>)</span></li>
+<li>Results complement existing surveys and extend to larger masses</li>
+<li>Framework applicable to other meteor observation networks</li>
+</ul>
+<aside class="notes">
+<ul>
+<li>Summarize key advantages of the HEALPix approach</li>
+<li>Emphasize how this improves flux calculations</li>
+<li>Note that the method is being prepared for wider release</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="thank-you" class="slide level2">
+<h2>Thank You!</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Contact</strong><br>
+Konstantinos Servis<br>
+knservis@gmail.com<br>
+ORCID: 0000-0002-3596-100X</p>
+<p><strong>Acknowledgments</strong></p>
+<ul>
+<li>Pawsey Supercomputing Centre</li>
+<li>Desert Fireball Network Team</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/single_timestep_example.png"></p>
+</div></div>
+<aside class="notes">
+<ul>
+<li>Thank audience for attention</li>
+<li>Mention any funding sources</li>
+<li>Note availability for questions</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-bland_rate_2006" class="csl-entry" role="listitem">
+Bland, Philip A., and Natalya A. Artemieva. 2006. <span>“The Rate of Small Impacts on <span>Earth</span>.”</span> <em>Meteoritics &amp; Planetary Science</em> 41 (4): 607–31. <a href="https://doi.org/10.1111/j.1945-5100.2006.tb00485.x">https://doi.org/10.1111/j.1945-5100.2006.tb00485.x</a>.
+</div>
+<div id="ref-bottke_debiased_2002" class="csl-entry" role="listitem">
+Bottke, W. 2002. <span>“Debiased <span>Orbital</span> and <span>Absolute</span> <span>Magnitude</span> <span>Distribution</span> of the <span>Near</span>-<span>Earth</span> <span>Objects</span>.”</span> <em>Icarus</em> 156 (2): 399–433. <a href="https://doi.org/10.1006/icar.2001.6788">https://doi.org/10.1006/icar.2001.6788</a>.
+</div>
+<div id="ref-brown_500-kiloton_2013" class="csl-entry" role="listitem">
+Brown, P. G., J. D. Assink, L. Astiz, R. Blaauw, M. B. Boslough, J. Borovička, N. Brachet, et al. 2013. <span>“A 500-Kiloton Airburst over <span>Chelyabinsk</span> and an Enhanced Hazard from Small Impactors.”</span> <em>Nature</em> 503 (November): 238–41. <a href="https://doi.org/10.1038/nature12741">https://doi.org/10.1038/nature12741</a>.
+</div>
+<div id="ref-brown_flux_2002" class="csl-entry" role="listitem">
+Brown, P., R. E. Spalding, D. O. ReVelle, E. Tagliaferri, and S. P. Worden. 2002. <span>“The Flux of Small Near-<span>Earth</span> Objects Colliding with the <span>Earth</span>.”</span> <em>Nature</em> 420 (6913): 294–96. <a href="https://doi.org/10.1038/nature01238">https://doi.org/10.1038/nature01238</a>.
+</div>
+<div id="ref-ceplecha_earths_1988" class="csl-entry" role="listitem">
+Ceplecha, Zdenek. 1988. <span>“Earth’s <span>Influx</span> of <span>Different</span> <span>Populations</span> of <span>Sporadic</span> <span>Meteoroids</span> from <span>Photographic</span> and <span>Television</span> <span>Data</span>.”</span> <em>Bulletin of the Astronomical Institutes of Czechoslovakia</em> 39 (July): 221. <a href="https://ui.adsabs.harvard.edu/abs/1988BAICz..39..221C">https://ui.adsabs.harvard.edu/abs/1988BAICz..39..221C</a>.
+</div>
+<div id="ref-devillepoix_observation_2019" class="csl-entry" role="listitem">
+Devillepoix, H A R, P A Bland, E K Sansom, M C Towner, M Cupák, R M Howie, B A D Hartig, T Jansen-Sturgeon, and M A Cox. 2019. <span>“Observation of Metre-Scale Impactors by the <span>Desert</span> <span>Fireball</span> <span>Network</span>.”</span> <em>Monthly Notices of the Royal Astronomical Society</em> 483 (4): 5166–78. <a href="https://doi.org/10.1093/mnras/sty3442">https://doi.org/10.1093/mnras/sty3442</a>.
+</div>
+<div id="ref-devillepoix_global_2020" class="csl-entry" role="listitem">
+Devillepoix, H. A. R., M. Cupák, P. A. Bland, E. K. Sansom, M. C. Towner, R. M. Howie, B. A. D. Hartig, et al. 2020. <span>“A <span>Global</span> <span>Fireball</span> <span>Observatory</span>.”</span> <em>Planetary and Space Science</em> 191 (October): 105036. <a href="https://doi.org/10.1016/j.pss.2020.105036">https://doi.org/10.1016/j.pss.2020.105036</a>.
+</div>
+<div id="ref-devillepoix_taurid_2021" class="csl-entry" role="listitem">
+Devillepoix, Hadrien A. R., Peter Jenniskens, Philip A. Bland, Eleanor K. Sansom, Martin C. Towner, Patrick Shober, Martin Cupák, et al. 2021. <span>“Taurid <span>Stream</span> #628: <span>A</span> <span>Reservoir</span> of <span>Large</span> <span>Cometary</span> <span>Impactors</span>.”</span> <em>The Planetary Science Journal</em> 2 (6): 223. <a href="https://doi.org/10.3847/PSJ/ac2250">https://doi.org/10.3847/PSJ/ac2250</a>.
+</div>
+<div id="ref-gorski_healpix_2005" class="csl-entry" role="listitem">
+Górski, K. M., E. Hivon, A. J. Banday, B. D. Wandelt, F. K. Hansen, M. Reinecke, and M. Bartelmann. 2005. <span>“<span>HEALPix</span>: <span>A</span> <span>Framework</span> for <span>High</span>-<span>Resolution</span> <span>Discretization</span> and <span>Fast</span> <span>Analysis</span> of <span>Data</span> <span>Distributed</span> on the <span>Sphere</span>.”</span> <em>The Astrophysical Journal</em> 622 (2): 759. <a href="https://doi.org/10.1086/427976">https://doi.org/10.1086/427976</a>.
+</div>
+<div id="ref-gritsevich_meteor_2008" class="csl-entry" role="listitem">
+Gritsevich, M. I., and N. V. Popelenskaya. 2008. <span>“Meteor and Fireball Trajectories for High Values of the Mass Loss Parameter.”</span> <em>Doklady Physics</em> 53 (2): 88–92. <a href="https://doi.org/10.1134/S1028335808020092">https://doi.org/10.1134/S1028335808020092</a>.
+</div>
+<div id="ref-halliday_detailed_1996" class="csl-entry" role="listitem">
+Halliday, Ian, Arthur A. Griffin, and Alan T. Blackwell. 1996. <span>“Detailed Data for 259 Fireballs from the <span>Canadian</span> Camera Network and Inferences Concerning the Influx of Large Meteoroids.”</span> <em>Meteoritics &amp; Planetary Science</em> 31 (2): 185–217. <a href="https://doi.org/10.1111/j.1945-5100.1996.tb02014.x">https://doi.org/10.1111/j.1945-5100.1996.tb02014.x</a>.
+</div>
+<div id="ref-howie_how_2017" class="csl-entry" role="listitem">
+Howie, Robert M., Jonathan Paxman, Philip A. Bland, Martin C. Towner, Martin Cupak, Eleanor K. Sansom, and Hadrien A. R. Devillepoix. 2017. <span>“How to Build a Continental Scale Fireball Camera Network.”</span> <em>Experimental Astronomy</em> 43 (3): 237–66. <a href="https://doi.org/10.1007/s10686-017-9532-7">https://doi.org/10.1007/s10686-017-9532-7</a>.
+</div>
+<div id="ref-moorhead_library_2023" class="csl-entry" role="listitem">
+Moorhead, Althea V. 2023. <span>“A Library of Meteoroid Environments Encountered by Spacecraft in the Inner Solar System.”</span> <a href="https://doi.org/10.1016/j.asr.2023.08.016">https://doi.org/10.1016/j.asr.2023.08.016</a>.
+</div>
+<div id="ref-sansom_novel_2015" class="csl-entry" role="listitem">
+Sansom, Eleanor Kate, Philip Bland, Jonathan Paxman, and Martin Towner. 2015. <span>“A Novel Approach to Fireball Modeling: <span>The</span> Observable and the Calculated.”</span> <em>Meteoritics and Planetary Science</em> 50 (August): 1423–35. <a href="https://doi.org/10.1111/maps.12478">https://doi.org/10.1111/maps.12478</a>.
+</div>
+<div id="ref-seares_mean_1925" class="csl-entry" role="listitem">
+Seares, Frederick H., P. J. van Rhijn, Mary C. Joyner, and Myrtle L. Richmond. 1925. <span>“Mean <span>Distribution</span> of <span>Stars</span> <span>According</span> to <span>Apparent</span> <span>Magnitude</span> and <span>Galactic</span> <span>Latitude</span>.”</span> <em>The Astrophysical Journal</em> 62 (December): 320. <a href="https://doi.org/10.1086/142940">https://doi.org/10.1086/142940</a>.
+</div>
+<div id="ref-spurny_discovery_2017" class="csl-entry" role="listitem">
+Spurný, P., J. Borovička, H. Mucke, and J. Svoreň. 2017. <span>“Discovery of a New Branch of the <span>Taurid</span> Meteoroid Stream as a Real Source of Potentially Hazardous Bodies.”</span> <em>Astronomy &amp; Astrophysics</em> 605 (September): A68. <a href="https://doi.org/10.1051/0004-6361/201730787">https://doi.org/10.1051/0004-6361/201730787</a>.
+</div>
+</div>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>Meteoroids 2025</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="debiasing_pres_m2025_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="debiasing_pres_m2025_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="debiasing_pres_m2025_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="debiasing_pres_m2025_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="debiasing_pres_m2025_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="debiasing_pres_m2025_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="debiasing_pres_m2025_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="debiasing_pres_m2025_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="debiasing_pres_m2025_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="debiasing_pres_m2025_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': true,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
