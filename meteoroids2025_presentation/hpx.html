@@ -1,0 +1,116 @@
+<script src='https://aladin.cds.unistra.fr/AladinLite/api/v3/latest/aladin.js' charset='utf-8'></script>
+
+<script>
+var aladin;
+A.init.then(() => {
+    aladin = A.aladin('#aladin-lite-div', {
+        target: '131.371202 -28.5069718', // Approximate center of DFN
+        cooFrame: 'wgs84',  // Use WGS84 coordinate frame
+        fov: 90,            // Field of view 60 degrees
+        showFrame: true,    // Show coordinate grid/frame
+        showLayersControl: true,
+        showGotoControl: true,
+        fullScreen: true
+    });
+    aladin.setImageSurvey('CDS/P/Earth/BlueMarble');
+    
+    // Create a catalog for the fireballs
+    var fireballs = A.catalog({sourceSize: 16, shape: 'plus', color: 'orange'}); 
+    aladin.addCatalog(fireballs);
+    
+    // Events from the dataset
+    const fireballData = [
+        // 2015 events from the CSV
+        {lon: 134.92376869, lat: -33.52931964, date: "2015-10-02", name: "DN151002_01", mass: 0.041},
+        {lon: 135.02670599, lat: -31.28044791, date: "2015-10-04", name: "DN151004_01", mass: 0.016},
+        {lon: 115.80184532, lat: -29.60019001, date: "2015-10-05", name: "DN151005_01", mass: 0.532},
+        {lon: 140.11992416, lat: -29.47685205, date: "2015-10-05", name: "DN151005_02", mass: 0.034},
+        {lon: 140.67104808, lat: -26.34351065, date: "2015-10-05", name: "DN151005_03", mass: 0.180},
+        {lon: 115.33281918, lat: -25.34477739, date: "2015-10-06", name: "DN151006_01", mass: 2.169},
+        {lon: 139.20689926, lat: -31.73609723, date: "2015-10-10", name: "DN151010_01", mass: 0.016},
+        {lon: 136.41577346, lat: -29.26016473, date: "2015-10-10", name: "DN151010_02", mass: 0.910},
+        {lon: 134.47472973, lat: -30.00463984, date: "2015-10-11", name: "DN151011_01", mass: 0.000},
+        {lon: 140.24941799, lat: -27.27626413, date: "2015-10-12", name: "DN151012_01", mass: 0.010},
+        {lon: 128.22136999, lat: -32.91098105, date: "2015-10-12", name: "DN151012_02", mass: 0.018},
+        {lon: 112.56179661, lat: -28.57714195, date: "2015-10-12", name: "DN151012_03", mass: 0.000},
+        {lon: 119.89229752, lat: -30.31874658, date: "2015-10-15", name: "DN151015_01", mass: 0.004},
+        {lon: 133.05729327, lat: -27.29155266, date: "2015-10-18", name: "DN151018_01", mass: 0.089},
+        {lon: 137.61171271, lat: -31.65281579, date: "2015-10-18", name: "DN151018_02", mass: 0.000},
+        {lon: 137.45781632, lat: -30.70843568, date: "2015-10-18", name: "DN151018_03", mass: 0.012},
+        {lon: 134.07518048, lat: -28.39165627, date: "2015-10-21", name: "DN151021_01", mass: 0.778},
+        {lon: 135.40885382, lat: -27.75774458, date: "2015-10-21", name: "DN151021_02", mass: 0.000},
+        {lon: 133.71819535, lat: -28.79234660, date: "2015-10-21", name: "DN151021_03", mass: 0.015},
+        {lon: 135.78250366, lat: -31.42442680, date: "2015-10-21", name: "DN151021_04", mass: 0.000},
+        {lon: 117.43358215, lat: -26.38980058, date: "2015-10-29", name: "DN151029_01", mass: 0.474},
+        {lon: 133.31666133, lat: -32.08381679, date: "2015-10-29", name: "DN151029_02", mass: 0.065},
+        {lon: 136.11340776, lat: -31.98045408, date: "2015-10-30", name: "DN151030_01", mass: 0.004},
+        {lon: 125.46140244, lat: -28.78745657, date: "2015-10-30", name: "DN151030_03", mass: 0.007},
+        {lon: 139.60667901, lat: -31.15468942, date: "2015-10-31", name: "DN151031_01", mass: 0.008},
+        {lon: 137.91359978, lat: -30.40632319, date: "2015-10-31", name: "DN151031_02", mass: 0.005},
+        {lon: 139.78880480, lat: -24.62357074, date: "2015-10-31", name: "DN151031_03", mass: 0.035},
+        {lon: 135.19374753, lat: -31.44224231, date: "2015-11-01", name: "DN151101_01", mass: 0.012},
+        {lon: 138.67450597, lat: -31.03679076, date: "2015-11-01", name: "DN151101_03", mass: 0.012},
+        {lon: 136.62724961, lat: -31.91015851, date: "2015-11-01", name: "DN151101_04", mass: 0.020},
+        {lon: 116.49558301, lat: -30.85872776, date: "2015-11-02", name: "DN151102_01", mass: 0.350},
+        {lon: 116.80799593, lat: -30.10565114, date: "2015-11-02", name: "DN151102_02", mass: 0.007},
+        {lon: 115.45203751, lat: -29.59747479, date: "2015-11-02", name: "DN151102_03", mass: 0.012},
+        {lon: 113.56002793, lat: -27.01314386, date: "2015-11-02", name: "DN151102_04", mass: 0.014},
+        {lon: 125.92539014, lat: -29.85757172, date: "2015-11-02", name: "DN151102_05", mass: 0.010},
+        {lon: 125.90217985, lat: -29.88731699, date: "2015-11-02", name: "DN151102_07", mass: 0.011},
+        {lon: 137.65790154, lat: -28.07269762, date: "2015-11-03", name: "DN151103_01", mass: 0.010},
+        {lon: 135.04161333, lat: -28.37367481, date: "2015-11-03", name: "DN151103_02", mass: 0.009},
+        {lon: 119.75483176, lat: -29.90528243, date: "2015-11-03", name: "DN151103_03", mass: 0.010},
+        {lon: 132.46423863, lat: -30.80681132, date: "2015-11-03", name: "DN151103_04", mass: 0.010},
+        {lon: 115.03233851, lat: -31.30947126, date: "2015-11-03", name: "DN151103_05", mass: 0.009},
+        {lon: 137.19082508, lat: -27.66376467, date: "2015-11-03", name: "DN151103_08", mass: 0.010},
+        {lon: 130.59048265, lat: -31.78336514, date: "2015-11-04", name: "DN151104_01", mass: 0.010},
+        {lon: 117.43358215, lat: -26.38980058, date: "2015-11-04", name: "DN151104_02", mass: 0.010},
+        {lon: 130.25209217, lat: -29.58150044, date: "2015-11-04", name: "DN151104_03", mass: 0.011},
+        {lon: 129.20865308, lat: -32.19576923, date: "2015-11-04", name: "DN151104_04", mass: 0.004},
+        {lon: 131.14371283, lat: -30.25439323, date: "2015-11-04", name: "DN151104_06", mass: 0.014},
+        {lon: 132.59286601, lat: -29.77268758, date: "2015-11-04", name: "DN151104_07", mass: 0.009},
+        {lon: 117.43358215, lat: -26.38980058, date: "2015-11-04", name: "DN151104_08", mass: 0.010},
+        {lon: 136.15186190, lat: -30.14584848, date: "2015-11-04", name: "DN151104_10", mass: 0.015},
+        {lon: 116.29836905, lat: -29.29380212, date: "2015-11-04", name: "DN151104_11", mass: 0.006},
+        {lon: 123.08993974, lat: -34.82725429, date: "2015-11-04", name: "DN151104_13", mass: 0.011},
+        {lon: 122.24362474, lat: -33.58223573, date: "2015-11-04", name: "DN151104_14", mass: 0.011},
+        {lon: 116.08051895, lat: -29.23466581, date: "2015-11-04", name: "DN151104_15", mass: 0.010},
+        {lon: 133.92854829, lat: -30.65373843, date: "2015-11-05", name: "DN151105_01", mass: 0.000},
+        {lon: 129.87920298, lat: -32.78673237, date: "2015-11-05", name: "DN151105_02", mass: 0.011},
+        {lon: 125.16225369, lat: -30.29017487, date: "2015-11-05", name: "DN151105_03", mass: 0.020},
+        {lon: 135.99634603, lat: -28.36178753, date: "2015-11-05", name: "DN151105_05", mass: 0.020},
+        {lon: 134.26568090, lat: -27.95957438, date: "2015-11-05", name: "DN151105_07", mass: 0.010},
+        {lon: 138.18355953, lat: -30.21340254, date: "2015-11-05", name: "DN151105_08", mass: 0.049},
+        {lon: 123.40822044, lat: -29.80833962, date: "2015-11-05", name: "DN151105_09", mass: 0.052},
+        {lon: 128.11282966, lat: -29.77268758, date: "2015-11-05", name: "DN151105_11", mass: 0.012}
+    ];
+    
+    // Add fireballs to the catalog with dynamic sizing based on mass
+    fireballData.forEach(event => {
+        const size = Math.max(16, Math.min(40, 16 + Math.log10(event.mass + 0.001) * 15)); // Scale size based on mass
+        const popup = `<strong>${event.name}</strong><br>Date: ${event.date}<br>Mass: ${event.mass.toFixed(3)} kg`;
+        fireballs.addSources([A.marker(event.lon, event.lat, {
+            popupTitle: event.name,
+            popupDesc: popup,
+            size: size
+        })]);
+    });
+    
+    // Create HEALPix grid
+    const order = 6; // NSIDE=64
+    const nPix = 12 * Math.pow(2, 2 * order);
+    // Aladin unfortunately joins HPX together if you declare them all together so I split it in two (odd and even) 
+    const ipix = Array.from({length: nPix/2}, (_, i) => i * 2);
+    var json = {};
+    json[order.toString()] = ipix;
+    var moc = A.MOCFromJSON(json, {opacity: 0.25, color: 'magenta', lineWidth: 3, edge: true});
+    aladin.addMOC(moc);
+    const ipix2 = Array.from({length: nPix/2}, (_, i) => (i * 2) + 1);
+    var json2 = {};
+    json2[order.toString()] = ipix2;
+    var moc2 = A.MOCFromJSON(json2, {opacity: 0.25, color: 'magenta', lineWidth: 3, edge: true});
+    aladin.addMOC(moc2);
+});
+</script> 
+
+<div id='aladin-lite-div' style='width: 800px; height: 600px;'></div>
