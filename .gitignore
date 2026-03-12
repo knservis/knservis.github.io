@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.vscode/
+msn/node_modules/
+msn/dist/
+.astro/
+msn/.astro/
+src/env.d.ts
+msn/src/env.d.ts

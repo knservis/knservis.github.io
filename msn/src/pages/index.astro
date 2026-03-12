@@ -1,0 +1,86 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+const posts = (await getCollection('posts')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+const recentPosts = posts.slice(0, 5);
+const base = import.meta.env.BASE_URL;
+---
+<Layout>
+  <section style="margin-bottom: 3.5rem;">
+    <p style="font-size: 1.15rem; color: var(--muted); font-style: italic; margin-bottom: 2rem;">
+      "Out of your vulnerabilities will come your strength"
+    </p>
+
+    <div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">
+      <img
+        src={`${base}/photo.jpg`}
+        alt="Marie Nussbaum"
+        style="width: 160px; height: 160px; object-fit: cover; border-radius: 50%; flex-shrink: 0;"
+      />
+      <div>
+        <h1>Marie Nussbaum</h1>
+        <p style="color: var(--muted); margin-bottom: 1rem;">Clinical Psychologist &amp; Psychoanalyst</p>
+        <p>
+          As a licensed clinical psychologist and psychoanalyst, I use my expertise to explore
+          complex psychological themes and offer insights into personal development and emotional
+          well-being.
+        </p>
+        <p>
+          With 20 years of experience — first in corporate settings, then in specialized clinical
+          hospital practice — I help clients understand themselves and engage with difficult
+          emotions through psychodynamic and psychoanalytic approaches.
+        </p>
+        <p>
+          My expertise spans psychology, AI consultation, and humanities research, focusing on
+          ethical innovation at the intersection of science and human care.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr />
+
+  <section id="approach" style="margin-bottom: 3.5rem;">
+    <h2>My Approach</h2>
+    <p>
+      I work with adults and teenagers facing a range of issues across their lifespan.
+      <a href={`${base}/approach`}>Read more →</a>
+    </p>
+  </section>
+
+  <hr />
+
+  <section id="contact" style="margin-bottom: 3.5rem;">
+    <h2>Contact</h2>
+    <p>
+      Book an appointment via
+      <a href="https://www.doctolib.fr/psychologue/marseille/marie-nussbaum" target="_blank" rel="noopener">Doctolib</a>
+      or by email at
+      <a href="mailto:[email protected]">[email protected]</a>.
+    </p>
+    <p style="font-size: 0.9rem; color: var(--muted);">
+      For urgent matters, contact your local emergency services or doctor directly.
+    </p>
+    <p style="font-size: 0.85rem; color: var(--muted);">RPPS: 10110326005</p>
+  </section>
+
+  <hr />
+
+  <section>
+    <h2>Recent Posts</h2>
+    <ul style="list-style: none; padding: 0; margin-top: 1rem;">
+      {recentPosts.map(post => (
+        <li style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.5rem 0; border-bottom: 1px solid var(--border); gap: 1rem; flex-wrap: wrap;">
+          <a href={`${base}/posts/${post.slug}`}>{post.data.title}</a>
+          <span style="font-size: 0.85rem; color: var(--muted); white-space: nowrap;">{post.data.date}</span>
+        </li>
+      ))}
+    </ul>
+    <p style="margin-top: 1.25rem;">
+      <a href={`${base}/posts`}>All posts →</a>
+    </p>
+  </section>
+</Layout>

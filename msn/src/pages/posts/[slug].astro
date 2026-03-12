@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const base = import.meta.env.BASE_URL;
+---
+<Layout title={`${post.data.title} — Marie Nussbaum`}>
+  <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 0.25rem;">
+    <a href={`${base}/posts`}>← Posts</a>
+  </p>
+  <h1 style="margin-top: 0.5rem;">{post.data.title}</h1>
+  {post.data.summary && <p style="color: var(--muted); font-style: italic;">{post.data.summary}</p>}
+  <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 2rem;">{post.data.date}</p>
+  <hr />
+  <article>
+    <Content />
+  </article>
+</Layout>
