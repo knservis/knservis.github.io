@@ -27,7 +27,6 @@ jobs:
           cache-dependency-path: |
             package-lock.json
             msn/package-lock.json
-            msn2/package-lock.json
 
       - name: Install root dependencies
         run: npm ci
@@ -41,14 +40,6 @@ jobs:
 
       - name: Build msn site
         working-directory: msn
-        run: npm run build
-
-      - name: Install msn2 dependencies
-        working-directory: msn2
-        run: npm ci
-
-      - name: Build msn2 site
-        working-directory: msn2
         run: npm run build
 
       - name: Upload Pages artifact
